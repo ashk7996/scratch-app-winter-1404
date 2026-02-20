@@ -24,6 +24,9 @@ struct Spirit {
     int direction = 0
             /* varies from 0 to 360, 0 -> faced to the right, 90 -> faced upward and so on ... */ , size = 100;
     bool isShow = true;
+    vector<SDL_Texture*> costumes;
+    int costumeCount = static_cast<int>(costumes.size()); /* the amount of its costumes */
+    int currentCostume = 0; /* the index which the costume is stored at in the vector */
 };
 
 

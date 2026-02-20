@@ -15,5 +15,14 @@ void ChangeXBy(int x);
 void ChangeYBy(int y);
 void IfOnEdge();
 void goToRandomPosition();
+void nextCostume();
+void changeCostume(int n);
+void ValidateSize();
+void changeSizeBy(int n);
+void setSize(int n);
+void show();
+void hide();
+void spiritCostume();
+void spiritSize();
 
 #endif //PROJECT_NAME_SPIRITFUNCTIONS_H

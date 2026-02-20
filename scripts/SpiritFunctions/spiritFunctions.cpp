@@ -103,3 +103,59 @@ void goToRandomPosition(){
 }
 // <<--------------------------------------------- Looks Commands --------------------------------------------->>
 
+void nextCostume(){
+
+    if(scratchApp.spirit.currentCostume == scratchApp.spirit.costumeCount - 1)
+        scratchApp.spirit.currentCostume = 0;
+    else
+        scratchApp.spirit.currentCostume++;
+}
+
+void changeCostume(int n){
+
+    if(n<=0 || n > scratchApp.spirit.costumeCount )
+        return;
+    else
+        scratchApp.spirit.currentCostume = n - 1;
+}
+
+void ValidateSize(){
+
+    int minSize = 5;
+    int maxSize = 500;
+    if(scratchApp.spirit.size <= minSize)
+        scratchApp.spirit.size = minSize;
+    else if(scratchApp.spirit.size >= maxSize)
+        scratchApp.spirit.size = maxSize;
+}
+
+void changeSizeBy(int n){
+
+    scratchApp.spirit.size += n;
+    ValidateSize();
+}
+
+void setSize(int n){
+
+    scratchApp.spirit.size = n;
+    ValidateSize();
+}
+
+void show(){
+
+    scratchApp.spirit.isShow = true;
+}
+void hide(){
+
+    scratchApp.spirit.isShow = false;
+}
+
+void spiritCostume(){
+
+    std::cout << scratchApp.spirit.currentCostume + 1;
+}
+
+void spiritSize(){
+
+    std::cout << scratchApp.spirit.size;
+}

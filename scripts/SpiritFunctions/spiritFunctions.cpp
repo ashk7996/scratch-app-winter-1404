@@ -3,7 +3,6 @@
 #include <cmath>
 
 // <<--------------------------------------------- Motion Commands --------------------------------------------->>
-
 void setSpiritX(int x) {
 
     scratchApp.spirit.spiritX = x;
@@ -17,30 +16,33 @@ void setSpiritY(int y){
 void ValidatePosition(){
 
     if (scratchApp.spirit.spiritX >= scratchApp.DW)
-        scratchApp.spirit.spiritX =scratchApp.DW;
+        scratchApp.spirit.spiritX = scratchApp.DW - 1;
     else if(scratchApp.spirit.spiritX <= 0)
         scratchApp.spirit.spiritX = 0;
     if(scratchApp.spirit.spiritY >= scratchApp.DH)
-        scratchApp.spirit.spiritY = scratchApp.DH;
+        scratchApp.spirit.spiritY = scratchApp.DH - 1;
     else if(scratchApp.spirit.spiritY <= 0)
         scratchApp.spirit.spiritY = 0;
 }
 
 void ValidateDirection(){
 
-    if(scratchApp.spirit.direction >= 360)
-        scratchApp.spirit.direction -= 360;
-    else if(scratchApp.spirit.direction <= -360)
-        scratchApp.spirit.direction += 360;
+    if(scratchApp.spirit.direction >= 360) {
+        int q = scratchApp.spirit.direction % 360;
+        scratchApp.spirit.direction -= q*360;
+    } else if(scratchApp.spirit.direction <= -360) {
+        int q = scratchApp.spirit.direction % 360;
+        scratchApp.spirit.direction -= q*360;
+    }
 }
 
 void MoveNSteps(int n){
 
     double degree = scratchApp.spirit.direction*M_PI/180;
     double dx = n*cos(degree);
-    double dy = n*sin(degree);
-    scratchApp.spirit.spiritX += (int)dx;
-    scratchApp.spirit.spiritY += (int)dy;
+    double dy = -n*sin(degree);
+    scratchApp.spirit.spiritX += dx;
+    scratchApp.spirit.spiritY += dy;
     ValidatePosition();
     }
 
@@ -57,7 +59,7 @@ void TurnRight(){
 
 void TurnLeft(){
 
-    scratchApp.spirit.spiritX = -90;
+    scratchApp.spirit.direction = -90;
 }
 
 void GoToXY(int x,int y){
@@ -94,9 +96,10 @@ void IfOnEdge(){
 
 void goToRandomPosition(){
 
-    srand(time(nullptr));
     int x = rand() % (scratchApp.DW + 1);
     int y = rand() % (scratchApp.DH + 1);
     setSpiritX(x);
     setSpiritY(y);
 }
+// <<--------------------------------------------- Looks Commands --------------------------------------------->>
+

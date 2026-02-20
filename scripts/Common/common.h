@@ -2,6 +2,7 @@
 #define PROJECT_NAME_COMMON_H
 
 #include <bits/stdc++.h>
+#include <ctime>
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <SDL_image.h>
@@ -19,7 +20,8 @@ struct Mouse {
 
 struct Spirit {
     string spiritName = "spirit-1";
-    int spiritX = 0, spiritY = 0, direction = 0
+    double spiritX = 0, spiritY = 0;
+    int direction = 0
             /* varies from 0 to 360, 0 -> faced to the right, 90 -> faced upward and so on ... */ , size = 100;
     bool isShow = true;
 };

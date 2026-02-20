@@ -10,7 +10,6 @@
 
 using namespace std;
 
-
 vector<Button> modesList = {
     {
         {0, 120, 150, 50},
@@ -44,6 +43,7 @@ vector<Button> modesList = {
 
 int main(int argc, char *args[]) {
     cout << "HELLO WORLD!" << endl;
+    srand(time(nullptr));
 
     // <<--------------------------------------------- initializing phase --------------------------------------------->>
 
